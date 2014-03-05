@@ -94,13 +94,13 @@ Changelog
 
 			if($this.prop("tagName") == "IMG"){ // find out if it's an image
 
-				containerWidth = $this.parent().width(); //- get container width
+				containerWidth = window.innerWidth; //- get container width
 
 				var cssMaxWidth = $this.css("maxWidth"); //- if we know an image's max width is a percentage, we can use smaller images because we know the maximum size is smaller than the container width
 				if (cssMaxWidth.charAt( cssMaxWidth.length-1 ) == "%") {
 					containerWidth *= parseInt(cssMaxWidth)*.01;
 				} else {
-					var percentageOfContainer = ( 100 * parseFloat($this.css('width')) / containerWidth ); //- account for max-width or width styles
+					var percentageOfContainer = ( 100 * parseFloat($this.css('innerWidth')) / containerWidth ); //- account for max-width or width styles
 					if (percentageOfContainer > 0 && percentageOfContainer < 100) {
 						containerWidth *= percentageOfContainer*.01;
 					}
